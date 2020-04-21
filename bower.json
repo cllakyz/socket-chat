@@ -1,0 +1,16 @@
+{
+  "name": "socket-chat",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Celal <cllakyz@hotmail.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "chat",
+    "nodejs",
+    "socketio",
+    "redis"
+  ],
+  "homepage": "https://github.com/cllakyz/socket-chat"
+}
