@@ -12,5 +12,8 @@
     "socketio",
     "redis"
   ],
-  "homepage": "https://github.com/cllakyz/socket-chat"
+  "homepage": "https://github.com/cllakyz/socket-chat",
+  "dependencies": {
+    "angular": "^1.7.9"
+  }
 }
