@@ -20,7 +20,7 @@ const app = express();
 const db = require('./helpers/db')();
 
 // middlewares
-const isAuthenticated = require('./middleware/isAuthenticated');
+const isAuthenticated = require('./middlewares/isAuthenticated');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
