@@ -10,7 +10,7 @@ function Users() {
 module.exports = new Users();
 
 Users.prototype.upsert = function (connectionId, meta) {
-    this.client.hmset('onlineUsers', meta._id, JSON.stringify({
+    this.client.hset('onlineUsers', meta._id, JSON.stringify({
         connectionId,
         meta,
         created_at: Date.now()
@@ -19,3 +19,10 @@ Users.prototype.upsert = function (connectionId, meta) {
             console.error(err);
     });
 };
+
+Users.prototype.remove = function (_id) {
+    this.client.hdel('onlineUsers', _id, err => {
+        if (err)
+            console.error(err);
+    });
+}
