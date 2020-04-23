@@ -17,7 +17,7 @@ ul,li{ margin:0; padding:0; list-style-type: none }
 
 .container .left a.search { display: block; float: left; width: 42px; height: 42px; margin-left: 10px; border: 1px solid var(--light); background-color: var(--blue); background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/name-type.png"); background-repeat: no-repeat; background-position: top 12px left 14px; border-radius: 50%;
 }
-.container .left .people { margin-left: -1px; border-right: 1px solid var(--light); border-left: 1px solid var(--light); width: calc(100% + 2px); height: calc(76% + 1px); overflow:scroll; }
+.tabArea { margin-left: -1px; border-right: 1px solid var(--light); border-left: 1px solid var(--light); width: calc(100% + 2px); height: calc(76% + 1px); overflow:scroll; }
 .container .left .people .person { position: relative; width: 100%; padding: 12px 10% 16px; cursor: pointer; background-color: var(--white); }
 .container .left .people .person:after { position: absolute; bottom: 0; left: 50%; display: block; width: 80%; height: 1px; content: ''; background-color: var(--light); -webkit-transform: translate(-50%, 0); transform: translate(-50%, 0); }
 .container .left .people .person img { float: left; width: 40px; height: 40px; margin-right: 12px; border-radius: 50%; }
@@ -66,7 +66,7 @@ ul,li{ margin:0; padding:0; list-style-type: none }
 
 .tab{ }
 
-.tab li{ width: 50%; float: left; }
+.tab li{ width: 50%; float: left; cursor: pointer; }
 .tab li a{ height:40px; display: block; text-align: center; color: black; background: #fafafa; text-decoration: none; padding: 10px; font-size: 15px; }
 .tab li a.active, .tab li a:hover{ background: #eceff1; }
 
