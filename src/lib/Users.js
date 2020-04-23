@@ -26,3 +26,19 @@ Users.prototype.remove = function (_id) {
             console.error(err);
     });
 }
+
+Users.prototype.list = function (callback) {
+    let active = [];
+
+    this.client.hgetall('onlineUsers', (err, users) => {
+        if (err) {
+            console.error(err);
+            return callback([]);
+        }
+        for (let user in users) {
+            if (users.hasOwnProperty(user))
+                active.push(JSON.parse(users[user]));
+        }
+        return callback(active);
+    });
+}
