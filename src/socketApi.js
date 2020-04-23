@@ -24,6 +24,10 @@ io.adapter(redisAdapter({
 io.on('connection', socket => {
     console.log('a user logged in with name ' + socket.request.user.name);
 
+    Rooms.list(rooms => {
+        io.emit('roomList', rooms);
+    });
+
     Users.upsert(socket.id, socket.request.user);
 
     Users.list(users => {
@@ -32,6 +36,9 @@ io.on('connection', socket => {
 
     socket.on('newRoom', name => {
         Rooms.upsert(name);
+        Rooms.list(rooms => {
+            io.emit('roomList', rooms);
+        });
     });
 
     socket.on('disconnect', () => {

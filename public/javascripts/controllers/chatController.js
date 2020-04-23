@@ -3,7 +3,8 @@ app.controller('chatController', ['$scope', ($scope) => {
      * Scope's variables.
      */
     $scope.onlineList = [];
-    $scope.activeTab = 2;
+    $scope.roomList   = [];
+    $scope.activeTab  = 2;
 
     /**
      * Scope's actions.
@@ -24,6 +25,11 @@ app.controller('chatController', ['$scope', ($scope) => {
 
     socket.on('onlineList', users => {
         $scope.onlineList = users;
+        $scope.$apply();
+    });
+
+    socket.on('roomList', rooms => {
+        $scope.roomList = rooms;
         $scope.$apply();
     });
 }]);

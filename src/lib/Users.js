@@ -27,14 +27,14 @@ Users.prototype.remove = function (_id) {
 Users.prototype.list = function (callback) {
     let active = [];
 
-    this.client.hgetall('onlineUsers', (err, users) => {
+    this.client.hgetall('onlineUsers', (err, data) => {
         if (err) {
             console.error(err);
             return callback([]);
         }
-        for (let user in users) {
-            if (users.hasOwnProperty(user))
-                active.push(JSON.parse(users[user]));
+        for (let user in data) {
+            if (data.hasOwnProperty(user))
+                active.push(JSON.parse(data[user]));
         }
         return callback(active);
     });

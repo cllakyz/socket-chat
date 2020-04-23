@@ -15,3 +15,19 @@ Rooms.prototype.upsert = function (roomName) {
             console.error(err);
     });
 };
+
+Rooms.prototype.list = function (callback) {
+    let roomList = [];
+
+    this.client.hgetall('rooms', (err, data) => {
+        if (err) {
+            console.error(err);
+            return callback([]);
+        }
+        for (let room in data) {
+            if (data.hasOwnProperty(room))
+                roomList.push(JSON.parse(data[room]));
+        }
+        return callback(roomList);
+    });
+}
