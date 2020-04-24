@@ -41,14 +41,16 @@ app.controller('chatController', ['$scope', 'userFactory', 'chatFactory', ($scop
 
     $scope.switchRoom = room => {
         $scope.chatClicked = true;
-        $scope.showLoading = true;
         $scope.roomId = room.id;
         $scope.chatName = room.name;
 
-        chatFactory.getMessages($scope.roomId).then(data => {
-            $scope.messages[$scope.roomId] = data;
-            $scope.showLoading = false;
-        });
+        if (!$scope.messages.hasOwnProperty($scope.roomId)) {
+            $scope.showLoading = true;
+            chatFactory.getMessages($scope.roomId).then(data => {
+                $scope.messages[$scope.roomId] = data;
+                $scope.showLoading = false;
+            });
+        }
         // $scope.$apply();
     };
 
