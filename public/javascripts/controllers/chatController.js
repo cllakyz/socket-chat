@@ -9,6 +9,7 @@ app.controller('chatController', ['$scope', 'chatFactory', ($scope, chatFactory)
     $scope.chatName     = "";
     $scope.roomId       = "";
     $scope.message      = "";
+    $scope.messages     = [];
 
     /**
      * Scope's actions.
@@ -31,7 +32,7 @@ app.controller('chatController', ['$scope', 'chatFactory', ($scope, chatFactory)
         $scope.chatName = room.name;
 
         chatFactory.getMessages($scope.roomId).then(data => {
-            console.log(data);
+            $scope.messages[$scope.roomId] = data;
         });
         // $scope.$apply();
     };
