@@ -1,4 +1,4 @@
-app.controller('chatController', ['$scope', ($scope) => {
+app.controller('chatController', ['$scope', 'chatFactory', ($scope, chatFactory) => {
     /**
      * Scope's variables.
      */
@@ -29,6 +29,10 @@ app.controller('chatController', ['$scope', ($scope) => {
         $scope.chatClicked = true;
         $scope.roomId = room.id;
         $scope.chatName = room.name;
+
+        chatFactory.getMessages($scope.roomId).then(data => {
+            console.log(data);
+        });
         // $scope.$apply();
     };
 
