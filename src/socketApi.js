@@ -45,6 +45,7 @@ io.on('connection', socket => {
     socket.on('newMessage', data => {
         Messages.upsert({
             ...data,
+            userId: socket.request.user._id,
             userName: socket.request.user.name,
             userSurName: socket.request.user.surname,
         });

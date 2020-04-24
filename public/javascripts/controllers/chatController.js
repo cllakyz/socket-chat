@@ -4,7 +4,6 @@ app.controller('chatController', ['$scope', 'userFactory', 'chatFactory', ($scop
      */
     function init() {
         userFactory.getUser().then(user => {
-            console.log(user);
             $scope.user = user;
         });
     }
