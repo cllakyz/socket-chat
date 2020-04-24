@@ -41,6 +41,10 @@ io.on('connection', socket => {
         });
     });
 
+    socket.on('newMessage', data => {
+
+    });
+
     socket.on('disconnect', () => {
         Users.remove(socket.request.user._id);
 
