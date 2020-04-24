@@ -85,4 +85,15 @@ app.controller('chatController', ['$scope', 'userFactory', 'chatFactory', ($scop
         $scope.roomList = rooms;
         $scope.$apply();
     });
+
+    socket.on('receiveMessage', data => {
+        $scope.messages[data.roomId].push({
+            userId: data.userId,
+            userName: data.userName,
+            userSurName: data.userSurName,
+            message: data.message,
+            created_at: Date.now()
+        });
+        $scope.$apply();
+    });
 }]);
