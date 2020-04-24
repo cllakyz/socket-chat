@@ -34,8 +34,8 @@ app.controller('chatController', ['$scope', ($scope) => {
 
     $scope.newMessage = () => {
         socket.emit('newMessage', {
-            message: $scope.message,
             roomId: $scope.roomId,
+            message: $scope.message,
         });
         $scope.message = '';
     };

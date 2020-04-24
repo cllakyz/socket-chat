@@ -9,8 +9,9 @@ const socketApi = {
 };
 
 // libs
-const Users = require('./lib/Users');
-const Rooms = require('./lib/Rooms');
+const Users     = require('./lib/Users');
+const Rooms     = require('./lib/Rooms');
+const Messages  = require('./lib/Messages');
 
 // Socket authorization
 io.use(socketAuthorization);
@@ -42,7 +43,11 @@ io.on('connection', socket => {
     });
 
     socket.on('newMessage', data => {
-
+        Messages.upsert({
+            ...data,
+            userName: socket.request.user.name,
+            userSurName: socket.request.user.surname,
+        });
     });
 
     socket.on('disconnect', () => {
