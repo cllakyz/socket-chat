@@ -2,9 +2,11 @@ app.controller('chatController', ['$scope', ($scope) => {
     /**
      * Scope's variables.
      */
-    $scope.onlineList = [];
-    $scope.roomList   = [];
-    $scope.activeTab  = 1;
+    $scope.onlineList   = [];
+    $scope.roomList     = [];
+    $scope.activeTab    = 1;
+    $scope.chatClicked  = false;
+    $scope.chatName     = "";
 
     /**
      * Scope's actions.
@@ -19,6 +21,12 @@ app.controller('chatController', ['$scope', ($scope) => {
         if (roomName !== '' && roomName !== null) {
             socket.emit('newRoom', roomName);
         }
+    };
+
+    $scope.switchRoom = room => {
+        $scope.chatClicked = true;
+        $scope.chatName = room.name;
+        // $scope.$apply();
     };
 
     /**
