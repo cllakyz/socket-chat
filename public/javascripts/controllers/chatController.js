@@ -55,11 +55,20 @@ app.controller('chatController', ['$scope', 'userFactory', 'chatFactory', ($scop
     };
 
     $scope.newMessage = () => {
-        socket.emit('newMessage', {
-            roomId: $scope.roomId,
-            message: $scope.message,
-        });
-        $scope.message = '';
+        if ($scope.message.trim() !== '') {
+            socket.emit('newMessage', {
+                roomId: $scope.roomId,
+                message: $scope.message,
+            });
+            $scope.messages[$scope.roomId].push({
+                userId: $scope.user._id,
+                userName: $scope.user.name,
+                userSurName: $scope.user.surname,
+                message: $scope.message,
+                created_at: Date.now()
+            });
+            $scope.message = '';
+        }
     };
 
     /**
